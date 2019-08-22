@@ -35,7 +35,14 @@ export default function App() {
         <p> 
           <img src={repo.avatar_url} alt={repo.full_name} />
           <strong>{repo.full_name}</strong>
-          <p>{repo.description}</p>
+          { repo.languages.length > 0 && (
+            <ul class="tags">
+              {repo.languages.map(language => (
+                  <li><a href="#" class="tag">{language}</a></li>
+              ))}
+            </ul>
+          ) }
+          <p className="description">{repo.description}</p>
 
           <div className="buttons">
             <a href={repo.url}>
